@@ -1,4 +1,4 @@
-## 0.3.4_1+1
+## 0.3.4+2
 
 * Android: Add support for subscription cross-grades
 
