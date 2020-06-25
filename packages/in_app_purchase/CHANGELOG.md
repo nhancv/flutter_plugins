@@ -1,3 +1,7 @@
+## 0.3.4_1+1
+
+* Android: Add support for subscription cross-grades
+
 ## 0.3.4+1
 
 * iOS: Fix the bug that `SKPaymentQueueWrapper.transactions` doesn't return all transactions.
