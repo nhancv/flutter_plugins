@@ -1,3 +1,7 @@
+## 0.3.4+4
+
+* Update spec
+
 ## 0.3.4+3
 
 * iOS: fix clean pending transactions, transactionIdentifer:(null) #(53534, 57356)
