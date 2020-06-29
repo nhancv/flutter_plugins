@@ -289,9 +289,34 @@
 #pragma mark - delegates
 
 - (void)handleTransactionsUpdated:(NSArray<SKPaymentTransaction *> *)transactions {
+//  NSMutableArray *maps = [NSMutableArray new];
+//  for (SKPaymentTransaction *transaction in transactions) {
+//    [maps addObject:[FIAObjectTranslator getMapFromSKPaymentTransaction:transaction]];
+//  }
+//  [self.callbackChannel invokeMethod:@"updatedTransactions" arguments:maps];
   NSMutableArray *maps = [NSMutableArray new];
   for (SKPaymentTransaction *transaction in transactions) {
-    [maps addObject:[FIAObjectTranslator getMapFromSKPaymentTransaction:transaction]];
+    switch (transaction.transactionState) {
+      case SKPaymentTransactionStatePurchasing:
+        [maps addObject:[FIAObjectTranslator getMapFromSKPaymentTransaction:transaction]];
+      break;
+      case SKPaymentTransactionStatePurchased:
+        [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
+        [maps addObject:[FIAObjectTranslator getMapFromSKPaymentTransaction:transaction]];
+      break;
+      case SKPaymentTransactionStateFailed:
+        [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
+        [maps addObject:[FIAObjectTranslator getMapFromSKPaymentTransaction:transaction]];
+      break;
+      case SKPaymentTransactionStateRestored:
+        [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
+        [maps addObject:[FIAObjectTranslator getMapFromSKPaymentTransaction:transaction]];
+      break;
+      case SKPaymentTransactionStateDeferred:
+        [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
+        [maps addObject:[FIAObjectTranslator getMapFromSKPaymentTransaction:transaction]];
+      break;
+    }
   }
   [self.callbackChannel invokeMethod:@"updatedTransactions" arguments:maps];
 }

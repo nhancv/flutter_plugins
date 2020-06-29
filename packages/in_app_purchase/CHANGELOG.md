@@ -1,3 +1,7 @@
+## 0.3.4+3
+
+* iOS: fix clean pending transactions, transactionIdentifer:(null) #(53534, 57356)
+
 ## 0.3.4+2
 
 * Android: Add support for subscription cross-grades
