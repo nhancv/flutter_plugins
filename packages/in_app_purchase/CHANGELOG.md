@@ -1,14 +1,14 @@
-## 0.3.4+4
-
-* Update spec
-
 ## 0.3.4+3
 
+* Update spec
+* Fixed typo 'manuelly' for 'manually'.
 * iOS: fix clean pending transactions, transactionIdentifer:(null) #(53534, 57356)
 
 ## 0.3.4+2
 
 * Android: Add support for subscription cross-grades
+* Update package:e2e reference to use the local version in the flutter/plugins
+  repository.
 
 ## 0.3.4+1
 
